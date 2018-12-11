@@ -1,0 +1,27 @@
+${path} {
+    ${when}
+    ${dateext}
+    missingok
+    rotate ${period}
+    ${compress}
+    #if $compresscmd
+    compresscmd ${compresscmd}
+    #end if
+    #if $compressext
+    compressext ${compressext}
+    #end if
+    delaycompress
+    notifempty
+    create ${perms} ${owner} ${group}
+    sharedscripts
+    #if $postrotate
+    postrotate
+        ${postrotate}
+    endscript
+    #end if
+    #if $prerotate
+    prerotate
+        ${prerotate}
+    endscript
+    #end if
+}

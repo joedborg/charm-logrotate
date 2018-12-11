@@ -1,0 +1,20 @@
+name: logrotate
+summary: Configures log rotation for services on a unit
+maintainers:
+  - Joe Borg <joseph.borg@canonical.com>
+description: |
+  Some charms create log files, but don't provide any mechanism to
+  rotate them.  This fixes that.
+tags:
+  - ops
+subordinate: true
+series:
+  - xenial
+  - bionic
+requires:
+  juju-info:
+    interface: juju-info
+    scope: container
+  logrotate:
+    interface: logrotate
+    scope: container

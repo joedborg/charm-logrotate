@@ -1,0 +1,44 @@
+options:
+  application_name:
+    default: "logrotate"
+    type: string
+    description: "Operating name of the charm"
+  when:
+    default: "daily"
+    type: string
+    description: "When the logs should be rotated (daily, weekly, etc.)"
+  compress:
+    default: "compress"
+    type: string
+    description: "Whether to compress logfiles (compress or nocompress)"
+  dateext:
+    default: "dateext"
+    type: string
+    description: "Log rotation style (dateext or nodateext)"
+  period:
+    default: "365"
+    type: string
+    description: "How many logs we should keep before they get deleted"
+  perms:
+    default: "0644"
+    type: string
+    description: "Logfile permissions (as chmod)"
+  owner:
+    default: "root"
+    type: string
+    description: "Logfile owner"
+  group:
+    default: "adm"
+    type: string
+    description: "Logfile group"
+  logfiles:
+    default: "{}"
+    type: string
+    description: >
+        Per logfile settings.  This should be JSON-formatted
+        object where each name/value pair describes a specific logfile
+        containing any overrides from the defaults plus three
+        additions: a mandatory "path" to the logfiles and optional
+        "prerotate" and "postrotate" for pre- and post-rotate commands.
+        e.g.:
+        '{"apache2":{"path":"/var/log/apache2/*.log","period":"7","postrotate":"/etc/init.d/apache2 reload > /dev/null"}}
